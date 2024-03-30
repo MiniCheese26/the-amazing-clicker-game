@@ -12,7 +12,7 @@
 				rel="noreferrer noopener me"
 				class="underline cursor-pointer">Emily Medhurst</a
 			>
-			/
+			in 2 hours /
 			<a
 				href="https://github.com/MiniCheese26/the-amazing-clicker-game"
 				target="_blank"
