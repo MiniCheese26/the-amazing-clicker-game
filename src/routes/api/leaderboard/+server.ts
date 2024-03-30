@@ -2,10 +2,10 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ platform }) => {
-	let rows;
+	let result;
 
 	try {
-		rows = await platform!.env.DB.prepare(
+		result = await platform!.env.DB.prepare(
 			'SELECT name, clicks FROM clicks ORDER BY clicks DESC'
 		).all();
 	} catch (error) {
@@ -13,5 +13,5 @@ export const GET: RequestHandler = async ({ platform }) => {
 		return new Response('Unknown error occurred fetching leaderboard', { status: 500 });
 	}
 
-	return json(rows);
+	return json(result.results);
 };
