@@ -13,8 +13,8 @@
 	let placement: number | null = null;
 
 	const onPoll = async () => {
-		if (nameSubmitted && data.count !== lastCount) {
-			const dataCopy = {...data};
+		if (nameSubmitted && (data.count !== lastCount || (lastCount === 0 && placement === null))) {
+			const dataCopy = { ...data };
 			localStorage.setItem('data', JSON.stringify(dataCopy));
 
 			const result = await fetch(`/api/${dataCopy.uuid}`, {
@@ -70,6 +70,7 @@
 		data.uuid = crypto.randomUUID();
 		data.count = 0;
 		data.name = '';
+		placement = null;
 
 		nameSubmitted = false;
 	};
