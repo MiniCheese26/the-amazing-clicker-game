@@ -2,4 +2,4 @@
 
 ## Made in 2 hours for my friend [Char](https://github.com/bl-kt) for their presentation at BLANK.
 
-## With some help from [NoSharp](https://github.com/NoSharp) ❤️
+## With some help from [Harry](https://github.com/NoSharp) ❤️
