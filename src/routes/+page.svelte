@@ -7,17 +7,19 @@
 		count: 0,
 		uuid: crypto.randomUUID()
 	};
+	let lastCount = 0;
 	let nameSubmitted = false;
 	let pollingInterval: number;
 	let placement: number | null = null;
 
 	const onPoll = async () => {
-		if (nameSubmitted) {
-			localStorage.setItem('data', JSON.stringify(data));
+		if (nameSubmitted && data.count !== lastCount) {
+			const dataCopy = {...data};
+			localStorage.setItem('data', JSON.stringify(dataCopy));
 
-			const result = await fetch('/api/poll', {
+			const result = await fetch(`/api/${dataCopy.uuid}`, {
 				method: 'PUT',
-				body: JSON.stringify(data)
+				body: JSON.stringify(dataCopy)
 			});
 
 			if (result.ok) {
@@ -25,6 +27,8 @@
 
 				placement = resultData.place;
 			}
+
+			lastCount = dataCopy.count;
 		}
 	};
 
@@ -65,6 +69,7 @@
 
 		data.uuid = crypto.randomUUID();
 		data.count = 0;
+		data.name = '';
 
 		nameSubmitted = false;
 	};

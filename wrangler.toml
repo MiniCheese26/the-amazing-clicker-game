@@ -1,0 +1,6 @@
+name = "the-amazing-clicker-game"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "char_clicker"
+database_id = "505a308e-2042-42da-9358-4673a61afc32"

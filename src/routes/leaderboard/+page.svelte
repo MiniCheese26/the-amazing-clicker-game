@@ -22,8 +22,6 @@
 	onDestroy(() => {
 		clearInterval(pollingInterval);
 	});
-
-	$: console.dir(leaderboard);
 </script>
 
 <nav class="flex flex-col items-center gap-2">
@@ -40,34 +38,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each leaderboard as row, index}
-				<tr>
-					<td>#{index + 1}</td>
-					<td>{row.name}</td>
-					<td>{row.clicks}</td>
-				</tr>
-			{/each}
-			{#each leaderboard as row, index}
-				<tr>
-					<td>#{index + 1}</td>
-					<td>{row.name}</td>
-					<td>{row.clicks}</td>
-				</tr>
-			{/each}
-			{#each leaderboard as row, index}
-				<tr>
-					<td>#{index + 1}</td>
-					<td>{row.name}</td>
-					<td>{row.clicks}</td>
-				</tr>
-			{/each}
-			{#each leaderboard as row, index}
-				<tr>
-					<td>#{index + 1}</td>
-					<td>{row.name}</td>
-					<td>{row.clicks}</td>
-				</tr>
-			{/each}
 			{#each leaderboard as row, index}
 				<tr>
 					<td>#{index + 1}</td>
