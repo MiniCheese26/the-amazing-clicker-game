@@ -74,6 +74,9 @@ devDependencies:
   unplugin-icons:
     specifier: ^0.18.5
     version: 0.18.5
+  uqr:
+    specifier: ^0.1.2
+    version: 0.1.2
   vite:
     specifier: ^5.2.7
     version: 5.2.7
@@ -3466,6 +3469,10 @@ packages:
       browserslist: 4.23.0
       escalade: 3.1.2
       picocolors: 1.0.0
+    dev: true
+
+  /uqr@0.1.2:
+    resolution: {integrity: sha512-MJu7ypHq6QasgF5YRTjqscSzQp/W11zoUk6kvmlH+fmWEs63Y0Eib13hYFwAzagRJcVY8WVnlV+eBDUGMJ5IbA==}
     dev: true
 
   /uri-js@4.4.1:
