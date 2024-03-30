@@ -86,26 +86,32 @@
 			</tr>
 		</thead>
 		<tbody class="text-2xl">
-			{#each leaderboard as row, index}
+			{#if leaderboard.length === 0}
+				{#each leaderboard as row, index}
+					<tr>
+						{#if row.change === 'down'}
+							<td class="text-red-500"><TablerArrowDown /></td>
+						{:else if row.change === 'up'}
+							<td class="text-green-500"><TablerArrowUp /></td>
+						{:else}
+							<td></td>
+						{/if}
+						<td>#{index + 1}</td>
+						{#if row.change === 'down'}
+							<td class="text-red-500">{row.name}</td>
+						{:else if row.change === 'up'}
+							<td class="text-green-500">{row.name}</td>
+						{:else}
+							<td>{row.name}</td>
+						{/if}
+						<td>{row.clicks}</td>
+					</tr>
+				{/each}
+			{:else}
 				<tr>
-					{#if row.change === 'down'}
-						<td class="text-red-500"><TablerArrowDown /></td>
-					{:else if row.change === 'up'}
-						<td class="text-green-500"><TablerArrowUp /></td>
-					{:else}
-						<td></td>
-					{/if}
-					<td>#{index + 1}</td>
-					{#if row.change === 'down'}
-						<td class="text-red-500">{row.name}</td>
-					{:else if row.change === 'up'}
-						<td class="text-green-500">{row.name}</td>
-					{:else}
-						<td>{row.name}</td>
-					{/if}
-					<td>{row.clicks}</td>
+					<td colspan="4" class="text-center">No one's here :(</td>
 				</tr>
-			{/each}
+			{/if}
 		</tbody>
 	</table>
 </main>
