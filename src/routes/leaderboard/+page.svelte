@@ -86,7 +86,7 @@
 			</tr>
 		</thead>
 		<tbody class="text-2xl">
-			{#if leaderboard.length === 0}
+			{#if leaderboard.length > 0}
 				{#each leaderboard as row, index}
 					<tr>
 						{#if row.change === 'down'}
