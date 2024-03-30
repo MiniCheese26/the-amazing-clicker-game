@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<div class="min-h-screen flex flex-col items-center p-4">
+<div class="min-h-svh flex flex-col items-center p-4">
 	<slot />
 	<footer>
 		<p>
