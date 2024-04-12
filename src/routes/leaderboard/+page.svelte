@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import type { PageData } from './$types';
-	import dayjs, { type Dayjs } from 'dayjs';
+	import dayjs from 'dayjs';
 	import type { LeaderboardRow } from '$lib/types';
 	import TablerArrowUp from '~icons/tabler/arrow-up';
 	import TablerArrowDown from '~icons/tabler/arrow-down';
 	import { renderSVG } from 'uqr';
+	import { enhance } from '$app/forms';
 
 	type LeaderboardRowWithChanges = {
 		change?: 'up' | 'down';
 	} & LeaderboardRow;
 
-	export let data: PageData;
+	export let data;
 
 	let pollingInterval: number;
 	let nowInterval: number;
@@ -82,8 +82,24 @@
 			{@html svg}
 		</button>
 	{:else}
-		<button on:click={() => (showQr = true)} class="bg-neutral-900 p-4 md:p-2 rounded-lg md:rounded-md border-2 border-neutral-100 text-neutral-100">Show QR Code</button>
+		<button
+			on:click={() => (showQr = true)}
+			class="bg-neutral-900 p-4 md:p-2 rounded-lg md:rounded-md border-2 border-neutral-100 text-neutral-100"
+			>Show QR Code</button
+		>
 	{/if}
+	<div class="fixed right-0 top-1/2 translate-y-1/2 mr-4">
+		<form method="POST" use:enhance class="flex flex-col gap-2">
+			<label>
+				Enter Password:
+				<input name="password" id="password" type="password" autocomplete="off" />
+			</label>
+			<button
+				class="bg-neutral-900 p-4 md:p-2 rounded-lg md:rounded-md border-2 border-neutral-100 text-neutral-100"
+				>Reset Stats</button
+			>
+		</form>
+	</div>
 	<div class="flex-1 flex flex-col justify-center items-center gap-4">
 		<h2 class="text-2xl">
 			{updating ? 'Updating...' : `Updating in ${nextUpdate.diff(now, 's')} seconds`}

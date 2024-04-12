@@ -1,7 +1,6 @@
-import type { RequestHandler } from './$types';
 import { json } from '@sveltejs/kit';
 
-export const PUT: RequestHandler = async ({ params, request, platform }) => {
+export const PUT = async ({ params, request, platform }) => {
 	const data = await request.json();
 
 	try {
@@ -38,7 +37,7 @@ export const PUT: RequestHandler = async ({ params, request, platform }) => {
 	return json({ place: place + 1 });
 };
 
-export const DELETE: RequestHandler = async ({ params, platform }) => {
+export const DELETE = async ({ params, platform }) => {
 	try {
 		await platform!.env.DB.prepare('DELETE FROM clicks WHERE uuid = ?').bind(params.uuid).run();
 	} catch (error) {
