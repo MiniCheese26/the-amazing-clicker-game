@@ -12,6 +12,9 @@
 	} & LeaderboardRow;
 
 	export let data;
+	export let form;
+
+	const RESET_BUTTON_DEFAULT = 'Reset Stats';
 
 	let pollingInterval: number;
 	let nowInterval: number;
@@ -21,6 +24,7 @@
 	let updating = false;
 	let svg: string;
 	let showQr = false;
+	let resetButton = RESET_BUTTON_DEFAULT;
 
 	const onPoll = async () => {
 		updating = true;
@@ -70,6 +74,21 @@
 		clearInterval(nowInterval);
 		clearInterval(pollingInterval);
 	});
+
+	const updateResetMessage = (status?: boolean) => {
+		if (status === undefined) {
+			resetButton = RESET_BUTTON_DEFAULT;
+			return;
+		}
+
+		resetButton = status ? 'Success' : 'Failed';
+
+		setTimeout(() => {
+			resetButton = RESET_BUTTON_DEFAULT;
+		}, 1000);
+	};
+
+	$: updateResetMessage(form?.success);
 </script>
 
 <nav class="flex flex-col items-center gap-2">
@@ -96,7 +115,7 @@
 			</label>
 			<button
 				class="bg-neutral-900 p-4 md:p-2 rounded-lg md:rounded-md border-2 border-neutral-100 text-neutral-100"
-				>Reset Stats</button
+				>{resetButton}</button
 			>
 		</form>
 	</div>
