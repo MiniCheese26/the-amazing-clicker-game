@@ -107,7 +107,7 @@
 			>Show QR Code</button
 		>
 	{/if}
-	<div class="fixed right-0 top-1/2 translate-y-1/2 mr-4">
+	<div class="hidden lg:block fixed right-0 top-1/2 translate-y-1/2 mr-4">
 		<form method="POST" use:enhance class="flex flex-col gap-2">
 			<label>
 				Enter Password:
